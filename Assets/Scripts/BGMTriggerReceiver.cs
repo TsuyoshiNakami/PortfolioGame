@@ -89,7 +89,12 @@ public class BGMTriggerReceiver : MonoBehaviour
         currentAudioSourceNum = 1 - currentAudioSourceNum;
         num = currentAudioSourceNum;
         bgmAudioSouraces[num].clip = clip;
-        FadeInRx(bgmAudioSouraces[num], 1, 1);
+        Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ =>
+       {
+           bgmAudioSouraces[num].volume = 1;
+           bgmAudioSouraces[num].Play();
+           //FadeInRx(bgmAudioSouraces[num], 0, 0);
+       });
     }
 
     private void FadeInRx(AudioSource source, float fadeTime, float delay)
