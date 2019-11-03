@@ -14,17 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BGMTransitionDataList
   list:
   - bgmEnum: 1
+    attributes: 
     audioClip: {fileID: 8300000, guid: 7806a03abcc42c746af8ee5bef0d9be4, type: 3}
     priority: 10
+    volume: 0
   - bgmEnum: 2
+    attributes: 
     audioClip: {fileID: 8300000, guid: bdd8bc5ee11b91d4ebfa8671f1b0b529, type: 3}
     priority: 20
+    volume: 0.488
   - bgmEnum: 3
+    attributes: 
     audioClip: {fileID: 8300000, guid: 84860cf2eef0b80478a947f4450b5c15, type: 3}
     priority: 20
+    volume: 0
   - bgmEnum: 4
+    attributes: 00000000000000000000000000000000
     audioClip: {fileID: 8300000, guid: b9fd171d3a4e0984b893ba2169d03b77, type: 3}
     priority: 30
+    volume: 0
   - bgmEnum: 5
+    attributes: 
     audioClip: {fileID: 8300000, guid: e0289cbd75d8675409deb737bbbfb22a, type: 3}
     priority: 10
+    volume: 0

@@ -13,10 +13,12 @@ public class Locomotion : MonoBehaviour
     public float gravity = 20.0F;       //重力の大きさ
     public float rotateSpeed = 3.0F;    //回転速度
 
+    bool isJumping;
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
-    private float h, v;
+    //private float h, v;
 
+    Vector3 velocity = Vector3.zero;
     Animator animator;
 
     // Use this for initialization
@@ -37,20 +39,23 @@ public class Locomotion : MonoBehaviour
         cameraDirection.y = 0f;
         Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, cameraDirection);
         // Convert joystick input in Worldspace coordinates
-        //if (controller.isGrounded)
+        if (controller.isGrounded)
         {
-            moveDirection = referentialShift * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            velocity = Vector3.zero;
             //moveDirection = transform.TransformDirection(moveDirection);
-            if (Input.GetButton("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
-
+                isJumping = true;
+                velocity.y += jumpSpeed;
             }
 
-        } 
-
+        }
+            moveDirection = referentialShift * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        velocity.y += gravity + Time.deltaTime;
+            controller.Move(Vector3.up * -velocity.y * Time.deltaTime);
         if (moveDirection != Vector3.zero)
         {
-            controller.Move(transform.forward * speed * Time.deltaTime + Vector3.down * gravity * Time.deltaTime);
+            controller.Move(transform.forward * speed * Time.deltaTime);
             transform.rotation = Quaternion.LookRotation(moveDirection);
             animator.SetInteger("AnimIndex", 3);
         } else

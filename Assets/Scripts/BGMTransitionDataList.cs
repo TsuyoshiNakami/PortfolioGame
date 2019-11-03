@@ -6,8 +6,15 @@ using UnityEngine;
 public class BGMTransitionData
 {
     public BGMEnum bgmEnum;
+    public List<BGMAttribute> attributes;
     public AudioClip audioClip;
     public int priority;
+   [Range(0, 1)] public float volume;
+}
+
+public enum BGMAttribute
+{
+    NotChangeByTrigger
 }
 
 [CreateAssetMenu]

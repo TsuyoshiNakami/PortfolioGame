@@ -22,12 +22,12 @@ public enum BgmTriggerMessageType
 
 public class BgmTriggerMessage
 {
-    public BGMEnum bgmEnum { get; private set; }
+    public BGMTransitionData bgmTransitionData { get; private set; }
     public BgmTriggerMessageType type { get; private set; }
 
-    public BgmTriggerMessage(BGMEnum bgmEnum, BgmTriggerMessageType type)
+    public BgmTriggerMessage(BGMTransitionData bgmData, BgmTriggerMessageType type)
     {
-        this.bgmEnum = bgmEnum;
+        this.bgmTransitionData = bgmData;
         this.type = type;
     }
 }
@@ -37,7 +37,13 @@ public class BgmTrigger : MonoBehaviour
 {
     bool isPlayerIn;
     [SerializeField] BGMEnum bgm;
+    BGMTransitionData bgmTransitionData;
+    
 
+    void Start()
+    {
+        bgmTransitionData = BGMTransitionDataList.Entity.GetDataByEnum(bgm);
+    }
 
     Subject<BgmTriggerMessage> playerEnterSubject = new Subject<BgmTriggerMessage>();
     public IObservable<BgmTriggerMessage> OnPlayerEnterSubject
@@ -64,8 +70,8 @@ public class BgmTrigger : MonoBehaviour
         {
             Debug.Log("Player Enter" + bgm);
 
-            MessageBroker.Default.Publish(new BgmTriggerMessage(bgm, BgmTriggerMessageType.Enter));
-            playerEnterSubject.OnNext(new BgmTriggerMessage(bgm, BgmTriggerMessageType.Enter));
+            MessageBroker.Default.Publish(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Enter));
+            playerEnterSubject.OnNext(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Enter));
             isPlayerIn = true;
         }
     }
@@ -75,8 +81,8 @@ public class BgmTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player Exit" + bgm);
-            playerEnterSubject.OnNext(new BgmTriggerMessage(bgm, BgmTriggerMessageType.Exit));
-            MessageBroker.Default.Publish(new BgmTriggerMessage(bgm, BgmTriggerMessageType.Exit));
+            playerEnterSubject.OnNext(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Exit));
+            MessageBroker.Default.Publish(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Exit));
             isPlayerIn = false;
         }
     }
