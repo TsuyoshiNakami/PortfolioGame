@@ -13,28 +13,41 @@ MonoBehaviour:
   m_Name: BGMList
   m_EditorClassIdentifier: Assembly-CSharp::BGMTransitionDataList
   list:
-  - bgmEnum: 1
+  - bgmName: Field
     attributes: 
-    audioClip: {fileID: 8300000, guid: 7806a03abcc42c746af8ee5bef0d9be4, type: 3}
+    seamlessBGMs:
+    - FlowerGarden
+    audioClip: {fileID: 8300000, guid: 2f59c1c3cfdf097469afb5c6e9781462, type: 3}
     priority: 10
-    volume: 0
-  - bgmEnum: 2
+    volume: 0.894
+  - bgmName: Lake
     attributes: 
+    seamlessBGMs: []
     audioClip: {fileID: 8300000, guid: bdd8bc5ee11b91d4ebfa8671f1b0b529, type: 3}
     priority: 20
     volume: 0.488
-  - bgmEnum: 3
+  - bgmName: Mountain
     attributes: 
+    seamlessBGMs: []
     audioClip: {fileID: 8300000, guid: 84860cf2eef0b80478a947f4450b5c15, type: 3}
     priority: 20
-    volume: 0
-  - bgmEnum: 4
+    volume: 0.502
+  - bgmName: MountainBoss
     attributes: 00000000000000000000000000000000
+    seamlessBGMs: []
     audioClip: {fileID: 8300000, guid: b9fd171d3a4e0984b893ba2169d03b77, type: 3}
     priority: 30
-    volume: 0
-  - bgmEnum: 5
+    volume: 0.562
+  - bgmName: MyHouse
     attributes: 
+    seamlessBGMs: []
     audioClip: {fileID: 8300000, guid: e0289cbd75d8675409deb737bbbfb22a, type: 3}
     priority: 10
-    volume: 0
+    volume: 0.431
+  - bgmName: FlowerGarden
+    attributes: 
+    seamlessBGMs:
+    - Field
+    audioClip: {fileID: 8300000, guid: 4ccc1450375c5e448a3777025c4708af, type: 3}
+    priority: 38
+    volume: 0.447

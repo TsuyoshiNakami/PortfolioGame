@@ -5,8 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class BGMTransitionData
 {
-    public BGMEnum bgmEnum;
+    public string bgmName;
     public List<BGMAttribute> attributes;
+    public List<string> seamlessBGMs;
     public AudioClip audioClip;
     public int priority;
    [Range(0, 1)] public float volume;
@@ -45,9 +46,9 @@ public class BGMTransitionDataList : ScriptableObject
     }
     [SerializeField]  List<BGMTransitionData> list;
 
-    public BGMTransitionData GetDataByEnum(BGMEnum pEnum)
+    public BGMTransitionData GetDataByName(string name)
     {
-        return list.Find(data => data.bgmEnum == pEnum);
+        return list.Find(data => data.bgmName == name);
     }
 
 }

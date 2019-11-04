@@ -21,10 +21,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 5489026941180a14193396d8b9928893, type: 3}
     priority: 0
     volume: 0.953
-  - seName: 
-    audioClip: {fileID: 0}
+  - seName: Gravel
+    audioClip: {fileID: 8300000, guid: 20d7fa9642b887c42a327361d7f03261, type: 3}
     priority: 0
-    volume: 0
+    volume: 0.579
   - seName: 
     audioClip: {fileID: 0}
     priority: 0

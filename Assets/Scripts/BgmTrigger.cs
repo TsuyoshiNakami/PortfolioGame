@@ -36,13 +36,13 @@ public class BgmTriggerMessage
 public class BgmTrigger : MonoBehaviour
 {
     bool isPlayerIn;
-    [SerializeField] BGMEnum bgm;
+    [SerializeField] string bgmName;
     BGMTransitionData bgmTransitionData;
     
 
     void Start()
     {
-        bgmTransitionData = BGMTransitionDataList.Entity.GetDataByEnum(bgm);
+        bgmTransitionData = BGMTransitionDataList.Entity.GetDataByName(bgmName);
     }
 
     Subject<BgmTriggerMessage> playerEnterSubject = new Subject<BgmTriggerMessage>();
@@ -68,7 +68,7 @@ public class BgmTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Enter" + bgm);
+            Debug.Log("Player Enter" + bgmName);
 
             MessageBroker.Default.Publish(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Enter));
             playerEnterSubject.OnNext(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Enter));
@@ -80,7 +80,7 @@ public class BgmTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Exit" + bgm);
+            Debug.Log("Player Exit" + bgmName);
             playerEnterSubject.OnNext(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Exit));
             MessageBroker.Default.Publish(new BgmTriggerMessage(bgmTransitionData, BgmTriggerMessageType.Exit));
             isPlayerIn = false;

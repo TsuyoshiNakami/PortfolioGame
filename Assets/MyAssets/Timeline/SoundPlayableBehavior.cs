@@ -52,7 +52,7 @@ public class SoundPlayableBehavior : PlayableBehaviour
         if (currentFrame >= 250)
         {
             hasBGMStarted = true;
-            BGMTransitionData newBGM = BGMTransitionDataList.Entity.GetDataByEnum(BGMEnum.MountainBoss);
+            BGMTransitionData newBGM = BGMTransitionDataList.Entity.GetDataByName("MountainBoss");
             newBGM.attributes.Add(BGMAttribute.NotChangeByTrigger);
             BGMManager.Instance.ChangeBGM(newBGM);
         }

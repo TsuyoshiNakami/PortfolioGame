@@ -10,7 +10,7 @@ public class BGMTriggerReceiver : MonoBehaviour
 
 
     [SerializeField] List<BGMTransitionData> currentTriggers = new List<BGMTransitionData>();
-    [SerializeField] BGMEnum currentBGM;
+    [SerializeField] string currentBGM;
 
 
     // Start is called before the first frame update
@@ -43,14 +43,14 @@ public class BGMTriggerReceiver : MonoBehaviour
         {
 
             BGMManager.Instance.StopAllBGM();
-            currentBGM = BGMEnum.None;
+            currentBGM = "";
             return;
         }
 
-        if (tmpData.bgmEnum != currentBGM)
+        if (tmpData.bgmName != currentBGM)
         {
             BGMManager.Instance.ChangeBGM(tmpData);
-            currentBGM = tmpData.bgmEnum;
+            currentBGM = tmpData.bgmName;
         }
 
 
