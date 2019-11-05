@@ -81,11 +81,13 @@ public class BGMManager : MonoBehaviour
 
         AudioClip clip = data.audioClip;
 
-        FadeOutRx(bgmAudioSources[num], 1);
+        int fadeTime = 2;
+
+        FadeOutRx(bgmAudioSources[num], 2);
         currentAudioSourceNum = 1 - currentAudioSourceNum;
         num = currentAudioSourceNum;
         bgmAudioSources[num].clip = clip;
-        Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ =>
+        Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ =>
        {
            bgmAudioSources[num].volume = data.volume;
            bgmAudioSources[num].Play();
